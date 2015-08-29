@@ -1,0 +1,42 @@
+.han_dwa_qa_asked_question {
+    margin-bottom: 15px;
+    border: 1px dotted #ddd;
+}
+
+.han_dwa_qa_asked_question:last-child {
+    margin-bottom: 0;
+}
+
+.han_dwa_qa_asked_question .meta {
+    margin-bottom: 0;
+    padding: 10px 20px;
+    border-bottom: 1px dotted #ddd;
+}
+
+.han_dwa_qa_asked_question .comment {
+    display: block;
+    margin-bottom: 0;
+    padding: 20px;
+}
+
+.han_dwa_qa_asked_question .reference {
+    display: block;
+    padding: 8px 20px 15px;
+ }
+
+.han_dwa_qa_asked_question .reference p:last-child {
+    margin-bottom: 0;
+}
+
+.han_dwa_qa_asked_question .upvote {
+    cursor: pointer;
+    -webkit-transition: all 0.25s ease-in-out;
+    -moz-transition: all 0.25s ease-in-out;
+    -ms-transition: all 0.25s ease-in-out;
+    -o-transition: all 0.25s ease-in-out;
+    transition: all 0.25s ease-in-out;
+}
+
+.han_dwa_qa_asked_question .upvote:hover {
+    color: #43bd18;
+}
