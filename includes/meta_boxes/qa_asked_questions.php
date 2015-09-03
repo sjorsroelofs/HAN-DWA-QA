@@ -17,7 +17,7 @@ function han_dwa_qa_asked_questions_meta_box() {
         foreach($hanDwaQaAskedQuestionsPostTypes as $postType) {
             add_meta_box(
                 'han_dwa_qa_asked_questions_meta_box_identifier' . '-' . $postType,
-                'Gestelde vragen',
+                __( 'Posted items', 'han-dwa-qa' ),
                 'han_dwa_qa_asked_questions_meta_box_callback',
                 $postType,
                 'normal',

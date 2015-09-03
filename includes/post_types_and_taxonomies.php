@@ -16,19 +16,19 @@ function han_dwa_qa_register_cpt_tax() {
         'supports'       => array( 'title', 'editor' ),
         'menu_icon'      => 'dashicons-megaphone',
         'labels'         => array(
-            'name'                 => 'Q&A\'s',
-    		'singular_name'        => 'Q&A',
-    		'menu_name'            => 'Q&A\'s',
-    		'name_admin_bar'       => 'Q&A',
-    		'add_new'              => 'Nieuwe Q&A toevoegen',
-    		'add_new_item'         => 'Nieuwe Q&A toevoegen',
-    		'new_item'             => 'Nieuwe Q&A',
-    		'edit_item'            => 'Bewerk Q&A',
-    		'view_item'            => 'Bekijk Q&A',
-    		'all_items'            => 'Alle Q&A\'s',
-    		'search_items'         => 'Zoek Q&A\'s',
-    		'not_found'            => 'Geen Q&A\'s gevonden',
-    		'not_found_in_trash'   => 'Geen Q&A\'s gevonden in de prullenbak'
+            'name'                 => __( "Q&A's", 'han-dwa-qa' ),
+    		'singular_name'        => __( 'Q&A', 'han-dwa-qa' ),
+    		'menu_name'            => __( "Q&A's", 'han-dwa-qa' ),
+    		'name_admin_bar'       => __( 'Q&A', 'han-dwa-qa' ),
+    		'add_new'              => __( 'Add new Q&A', 'han-dwa-qa' ),
+    		'add_new_item'         => __( 'Add new Q&A', 'han-dwa-qa' ),
+    		'new_item'             => __( 'New Q&A', 'han-dwa-qa' ),
+    		'edit_item'            => __( 'Edit Q&A', 'han-dwa-qa' ),
+    		'view_item'            => __( 'View Q&A', 'han-dwa-qa' ),
+    		'all_items'            => __( "All Q&A's", 'han-dwa-qa' ),
+    		'search_items'         => __( "Find Q&A's", 'han-dwa-qa' ),
+    		'not_found'            => __( "No Q&A's found", 'han-dwa-qa' ),
+    		'not_found_in_trash'   => __( "No Q&A's found in the trash", 'han-dwa-qa' )
         )
     );
 
@@ -41,20 +41,20 @@ function han_dwa_qa_register_cpt_tax() {
 		'show_admin_column'   => true,
 		'query_var'           => true,
 		'rewrite'             => array(
-            'slug' => 'klas'
+            'slug' => __( 'class', 'han-dwa-qa' )
         ),
         'labels'              => array(
-    	    'name'                => 'Klassen',
-    		'singular_name'       => 'Klas',
-    		'search_items'        => 'Zoek klassen',
-    		'all_items'           => 'Alle klassen',
-            'parent_item'         => 'Bovenliggende klas',
-    		'parent_item_colon'   => 'Bovenliggende klas:',
-    		'edit_item'           => 'Bewerk klas',
-    		'update_item'         => 'Update klas',
-    		'add_new_item'        => 'Nieuwe klas toevoegen',
-    		'new_item_name'       => 'Naam nieuwe klas',
-    		'menu_name'           => 'Klassen'
+    	    'name'                => __( 'Classes', 'han-dwa-qa' ),
+    		'singular_name'       => __( 'Class', 'han-dwa-qa' ),
+    		'search_items'        => __( 'Find classes', 'han-dwa-qa' ),
+    		'all_items'           => __( 'All classes', 'han-dwa-qa' ),
+            'parent_item'         => __( 'Parent class', 'han-dwa-qa' ),
+    		'parent_item_colon'   => __( 'Parent class', 'han-dwa-qa' ) . '.',
+    		'edit_item'           => __( 'Edit class', 'han-dwa-qa' ),
+    		'update_item'         => __( 'Update class', 'han-dwa-qa' ),
+    		'add_new_item'        => __( 'Add new class', 'han-dwa-qa' ),
+    		'new_item_name'       => __( 'New class name', 'han-dwa-qa' ),
+    		'menu_name'           => __( 'Classes', 'han-dwa-qa' )
     	)
 	);
 
@@ -69,19 +69,19 @@ function han_dwa_qa_register_cpt_tax() {
         'supports'           => array( 'editor' ),
         'menu_icon'          => 'dashicons-format-status',
         'labels'             => array(
-            'name'                 => 'Gestelde vragen',
-    		'singular_name'        => 'Gestelde vraag',
-    		'menu_name'            => 'Gestelde vragen',
-    		'name_admin_bar'       => 'Gestelde vraag',
-    		'add_new'              => 'Nieuwe vraag toevoegen',
-    		'add_new_item'         => 'Nieuwe vraag toevoegen',
-    		'new_item'             => 'Nieuwe vraag',
-    		'edit_item'            => 'Bewerk vraag',
-    		'view_item'            => 'Bekijk vraag',
-    		'all_items'            => 'Alle vragen',
-    		'search_items'         => 'Zoek vragen',
-    		'not_found'            => 'Geen vragen gevonden',
-    		'not_found_in_trash'   => 'Geen vragen gevonden in de prullenbak'
+            'name'                 => __( 'Posted items', 'han-dwa-qa' ),
+    		'singular_name'        => __( 'Posted item', 'han-dwa-qa' ),
+    		'menu_name'            => __( 'Posted items', 'han-dwa-qa' ),
+    		'name_admin_bar'       => __( 'Posted items', 'han-dwa-qa' ),
+    		'add_new'              => __( 'Add new item', 'han-dwa-qa' ),
+    		'add_new_item'         => __( 'Add new item', 'han-dwa-qa' ),
+    		'new_item'             => __( 'New item', 'han-dwa-qa' ),
+    		'edit_item'            => __( 'Edit item', 'han-dwa-qa' ),
+    		'view_item'            => __( 'View item', 'han-dwa-qa' ),
+    		'all_items'            => __( 'All items', 'han-dwa-qa' ),
+    		'search_items'         => __( 'Find items', 'han-dwa-qa' ),
+    		'not_found'            => __( 'No items found', 'han-dwa-qa' ),
+    		'not_found_in_trash'   => __( 'No items found in the trash', 'han-dwa-qa' )
         ),
         'map_meta_cap'      => true,
         'capabilities'      => array(
@@ -101,9 +101,9 @@ function han_dwa_qa_add_question_admin_columns( $columns ) {
     return array(
         'cb'      => '<input type="checkbox" />',
         'title'   => __( 'Title' ),
-        'email'   => 'Email',
-        'votes'   => 'Votes',
-        'qa'      => 'Q&A',
+        'email'   => __( 'Email', 'han-dwa-qa' ),
+        'votes'   => __( 'Votes', 'han-dwa-qa' ),
+        'qa'      => __( 'Q&A', 'han-dwa-qa' ),
         'date'    => __( 'Date' )
     );
 }
@@ -143,8 +143,8 @@ function han_dwa_qa_add_qa_admin_columns( $columns ) {
     return array(
         'cb'                                 => '<input type="checkbox" />',
         'title'                              => __( 'Title' ),
-        'question-counter'                   => 'Aantal gestelde vragen',
-        'taxonomy-' . HAN_DWA_QA_CLASS_TAX   => 'Klassen',
+        'question-counter'                   => __( 'Number of posted items', 'han-dwa-qa' ),
+        'taxonomy-' . HAN_DWA_QA_CLASS_TAX   => __( 'Classes', 'han-dwa-qa' ),
         'date'                               => __( 'Date' )
     );
 }

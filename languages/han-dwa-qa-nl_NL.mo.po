@@ -1,0 +1,158 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: han-dwa-qa\n"
+"POT-Creation-Date: 2015-09-03 10:28+0100\n"
+"PO-Revision-Date: 2015-09-03 11:58+0100\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.10\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+msgid "Question from %s"
+msgstr "Vraag van %s"
+
+msgid "Name"
+msgstr "Naam"
+
+msgid "Email"
+msgstr "E-mailadres"
+
+msgid "Reference"
+msgstr "Referentie"
+
+msgid "Details"
+msgstr "Details"
+
+msgid "at %s on %s"
+msgstr "op %s om %s"
+
+msgid "No items have been posted"
+msgstr "Er zijn nog geen items geplaatst"
+
+msgid "Posted items"
+msgstr "Geplaatste items"
+
+msgid "Q&A"
+msgstr "Q&A"
+
+msgid "Q&A's"
+msgstr "Q&A's"
+
+msgid "Add new Q&A"
+msgstr "Nieuwe Q&A toevoegen"
+
+msgid "New Q&A"
+msgstr "Nieuwe Q&A"
+
+msgid "Edit Q&A"
+msgstr "Bewerk Q&A"
+
+msgid "View Q&A"
+msgstr "Bekijk Q&A"
+
+msgid "All Q&A's"
+msgstr "All Q&A's"
+
+msgid "Find Q&A's"
+msgstr "Zoek Q&A's"
+
+msgid "No Q&A's found"
+msgstr "Geen Q&A's gevonden"
+
+msgid "No Q&A's found in the trash"
+msgstr "Geen Q&A's gevonden in de prullenbak"
+
+msgid "class"
+msgstr "klas"
+
+msgid "Class"
+msgstr "Klas"
+
+msgid "Classes"
+msgstr "Klassen"
+
+msgid "Find classes"
+msgstr "Zoek klassen"
+
+msgid "All classes"
+msgstr "Alle klassen"
+
+msgid "Parent class"
+msgstr "Bovenliggende klas"
+
+msgid "Edit class"
+msgstr "Bewerk klas"
+
+msgid "Update class"
+msgstr "Update klas"
+
+msgid "Add new class"
+msgstr "Nieuwe klas toevoegen"
+
+msgid "New class name"
+msgstr "Naam nieuwe klas"
+
+msgid "Posted item"
+msgstr "Geplaatste items"
+
+msgid "Add new item"
+msgstr "Nieuwe item toevoegen"
+
+msgid "New item"
+msgstr "Nieuw item"
+
+msgid "Edit item"
+msgstr "Bewerk item"
+
+msgid "View item"
+msgstr "Bekijk item"
+
+msgid "All items"
+msgstr "Alle items"
+
+msgid "Find items"
+msgstr "Zoek items"
+
+msgid "No items found"
+msgstr "Geen items gevonden"
+
+msgid "No items found in the trash"
+msgstr "Geen items gevonden in de prullenbak"
+
+msgid "Votes"
+msgstr "Stemmen"
+
+msgid "Number of posted items"
+msgstr "Aantal geplaatste items"
+
+msgid "Upvote this question"
+msgstr "Vraag upvoten"
+
+msgid "vote"
+msgstr "stem"
+
+msgid "votes"
+msgstr "stemmen"
+
+msgid "Posted on %s at %s"
+msgstr "Geplaatst op %s om %s"
+
+msgid "References"
+msgstr "Referenties"
+
+msgid "Submit your question"
+msgstr "Plaats je vraag"
+
+msgid "Your question, discussion item"
+msgstr "Je vraag, discussie item"
+
+msgid "Your references (including quote, url, time in video)"
+msgstr "Je referenties (inclusief quote, url, tijd in video)"
+
+msgid "Submit"
+msgstr "Verzend"

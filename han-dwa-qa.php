@@ -42,6 +42,7 @@ register_activation_hook( __FILE__, 'han_dwa_qa_reset_permalinks' );
 function han_dwa_qa_init() {
     add_action( 'init', 'han_dwa_qa_register_cpt_tax' );
     add_action( 'plugins_loaded', 'han_dwa_qa_check_database' );
+    add_action( 'plugins_loaded', 'han_dwa_qa_load_textdomain' );
     add_action( 'delete_post', 'han_dwa_post_deleted' );
     add_action( 'wp_enqueue_scripts', 'han_dwa_qa_add_styles_scripts' );
     add_action( 'manage_' . HAN_DWA_QA_QUESTION_CPT . '_posts_custom_column', 'han_dwa_qa_question_admin_columns_content', 10, 2 );
@@ -76,6 +77,14 @@ function han_dwa_qa_add_styles_scripts() {
     wp_enqueue_script( 'han_dwa_qa_scripts', plugin_dir_url( __FILE__ ) . 'assets/js/han_dwa_qa_scripts.js', array( 'jquery' ), '1.0.0' );
     wp_localize_script( 'han_dwa_qa_scripts', 'han_dwa_qa_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 }
+// echo WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+/**
+ * Load the text domain for the plugin translation
+ * @return (void)
+ */
+function han_dwa_qa_load_textdomain() {
+	load_plugin_textdomain( 'han-dwa-qa', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
 
 /**
  * Add a new question and chain it to a Q&A
@@ -87,7 +96,7 @@ function han_dwa_qa_add_question( $questionData = null, $qaId = null ) {
     if($qaId && (bool)get_post_status( intval( $qaId ) ) && han_dwa_qa_validate_question_data( $questionData ) && han_dwa_qa_is_email_unique_for_qa( intval( $qaId ), sanitize_email( $questionData['email'] ) )) {
         $questionId = wp_insert_post( array(
             'post_content'   => wp_kses_post( nl2br( $questionData['question'] ) ),
-            'post_title'     => 'Vraag van ' . sanitize_text_field( $questionData['name'] ),
+            'post_title'     => sprintf( __( 'Question from %s', 'han-dwa-qa' ), sanitize_text_field( $questionData['name'] ) ),
             'post_status'    => 'publish',
             'post_type'      => HAN_DWA_QA_QUESTION_CPT
         ) );
@@ -188,7 +197,6 @@ function han_dwa_qa_modify_the_content( $content ) {
         echo '</div>';
 
         $content .= ob_get_clean();
-        ob_end_flush();
     }
 
     return $content;

@@ -16,7 +16,7 @@ function han_dwa_qa_question_details_meta_box() {
     foreach($hanDwaQaQuestionDetailsPostTypes as $postType) {
         add_meta_box(
             'han_dwa_qa_question_details_meta_box_identifier' . '-' . $postType,
-            'Details',
+            __( 'Details', 'han-dwa-qa' ),
             'han_dwa_qa_question_details_meta_box_callback',
             $postType,
             'normal',
