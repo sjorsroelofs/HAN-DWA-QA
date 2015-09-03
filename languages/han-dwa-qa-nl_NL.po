@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: han-dwa-qa\n"
 "POT-Creation-Date: 2015-09-03 10:28+0100\n"
-"PO-Revision-Date: 2015-09-03 11:58+0100\n"
+"PO-Revision-Date: 2015-09-03 19:58+0100\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -142,17 +142,23 @@ msgstr "stemmen"
 msgid "Posted on %s at %s"
 msgstr "Geplaatst op %s om %s"
 
-msgid "References"
-msgstr "Referenties"
+msgid "References for question %s"
+msgstr "Referenties voor vraag %s"
 
 msgid "Submit your question"
 msgstr "Plaats je vraag"
 
-msgid "Your question, discussion item"
-msgstr "Je vraag, discussie item"
+msgid "Your question or discussion item %s"
+msgstr "Je vraag of discussie item %s"
 
-msgid "Your references (including quote, url, time in video)"
-msgstr "Je referenties (inclusief quote, url, tijd in video)"
+msgid "Your references (including quote, url, time in video) for question %s"
+msgstr "Je referenties (inclusief quote, url, tijd in video) voor vraag %s"
 
 msgid "Submit"
 msgstr "Verzend"
+
+msgid "Amount of questions"
+msgstr "Aantal vragen"
+
+msgid "Question %s"
+msgstr "Vraag %s"

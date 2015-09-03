@@ -8,24 +8,25 @@
  * Author URI: http://www.sjors.io
  */
 
+ // Set some constants
+ define( 'HAN_DWA_QA_CPT', 'han_dwa_qa' );
+ define( 'HAN_DWA_QA_CLASS_TAX', 'han_dwa_qa_class' );
+ define( 'HAN_DWA_QA_QUESTION_CPT', 'han_dwa_qa_question' );
+
+ define( 'HAN_DWA_QA_QUESTION_RELATION_TABLE_NAME', 'han_dwa_qa_question_relations' );
+ define( 'HAN_DWA_QA_QUESTION_RELATION_DB_VERSION', '1.0' );
+
+ define( 'HAN_DWA_QA_QUESTION_VOTES_TABLE_NAME', 'han_dwa_qa_question_votes' );
+ define( 'HAN_DWA_QA_QUESTION_VOTES_DB_VERSION', '1.0' );
+
 // Include some files
 require_once( 'classes/question.class.php' );
 require_once( 'includes/database_setup.php' );
 require_once( 'includes/post_types_and_taxonomies.php' );
 require_once( 'includes/ajax_callbacks.php' );
 
-// Set some constants
-define( 'HAN_DWA_QA_CPT', 'han_dwa_qa' );
-define( 'HAN_DWA_QA_CLASS_TAX', 'han_dwa_qa_class' );
-define( 'HAN_DWA_QA_QUESTION_CPT', 'han_dwa_qa_question' );
-
-define( 'HAN_DWA_QA_QUESTION_RELATION_TABLE_NAME', 'han_dwa_qa_question_relations' );
-define( 'HAN_DWA_QA_QUESTION_RELATION_DB_VERSION', '1.0' );
-
-define( 'HAN_DWA_QA_QUESTION_VOTES_TABLE_NAME', 'han_dwa_qa_question_votes' );
-define( 'HAN_DWA_QA_QUESTION_VOTES_DB_VERSION', '1.0' );
-
 // Include the meta boxes
+require_once( 'includes/meta_boxes/qa_details.php' );
 require_once( 'includes/meta_boxes/qa_asked_questions.php' );
 require_once( 'includes/meta_boxes/question_details.php' );
 
@@ -77,7 +78,7 @@ function han_dwa_qa_add_styles_scripts() {
     wp_enqueue_script( 'han_dwa_qa_scripts', plugin_dir_url( __FILE__ ) . 'assets/js/han_dwa_qa_scripts.js', array( 'jquery' ), '1.0.0' );
     wp_localize_script( 'han_dwa_qa_scripts', 'han_dwa_qa_ajax_object', array( 'ajax_url' => admin_url( 'admin-ajax.php' ) ) );
 }
-// echo WP_PLUGIN_DIR . '/' . dirname( plugin_basename( __FILE__ ) ) . '/languages/';
+
 /**
  * Load the text domain for the plugin translation
  * @return (void)
@@ -93,9 +94,12 @@ function han_dwa_qa_load_textdomain() {
  * @return (bool) true on success, false on error
  */
 function han_dwa_qa_add_question( $questionData = null, $qaId = null ) {
-    if($qaId && (bool)get_post_status( intval( $qaId ) ) && han_dwa_qa_validate_question_data( $questionData ) && han_dwa_qa_is_email_unique_for_qa( intval( $qaId ), sanitize_email( $questionData['email'] ) )) {
+    $questionCount = han_dwa_qa_get_qa_question_amount( $qaId );
+
+
+
+    if($qaId && (bool)get_post_status( intval( $qaId ) ) && han_dwa_qa_validate_question_data( $questionData, $questionCount ) && han_dwa_qa_is_email_unique_for_qa( intval( $qaId ), sanitize_email( $questionData['email'] ) )) {
         $questionId = wp_insert_post( array(
-            'post_content'   => wp_kses_post( nl2br( $questionData['question'] ) ),
             'post_title'     => sprintf( __( 'Question from %s', 'han-dwa-qa' ), sanitize_text_field( $questionData['name'] ) ),
             'post_status'    => 'publish',
             'post_type'      => HAN_DWA_QA_QUESTION_CPT
@@ -106,7 +110,11 @@ function han_dwa_qa_add_question( $questionData = null, $qaId = null ) {
 
             add_post_meta( $questionId, 'han_dwa_qa_question_name', sanitize_text_field( $questionData['name'] ) );
             add_post_meta( $questionId, 'han_dwa_qa_question_email', sanitize_email( $questionData['email'] ) );
-            add_post_meta( $questionId, 'han_dwa_qa_question_reference', wp_kses_post( nl2br( $questionData['reference'] ) ) );
+
+            for($i = 1; $i <= $questionCount; $i++) {
+                add_post_meta( $questionId, 'han_dwa_qa_question_content_' . $i, $questionData['question_' . $i] );
+                add_post_meta( $questionId, 'han_dwa_qa_question_reference_' . $i, $questionData['reference_' . $i] );
+            }
 
             return (bool)$wpdb->insert(
                 $wpdb->prefix . HAN_DWA_QA_QUESTION_RELATION_TABLE_NAME,
@@ -143,8 +151,13 @@ function han_dwa_qa_is_email_unique_for_qa( $qaId, $email ) {
  * @param (array) an array with the question fields
  * @return (bool) true on valid, false on invalid
  */
-function han_dwa_qa_validate_question_data( $questionData ) {
-    $requiredFields = array( 'name', 'email', 'question', 'reference' );
+function han_dwa_qa_validate_question_data( $questionData, $questionCount ) {
+    $requiredFields = array( 'name', 'email' );
+
+    for($i = 1; $i <= $questionCount; $i++) {
+        $requiredFields[] = 'question_' . $i;
+        $requiredFields[] = 'reference_' . $i;
+    }
 
     foreach($requiredFields as $requiredKey) {
         if(!in_array( $requiredKey, (array)array_keys( $questionData ) ) || empty( $questionData[$requiredKey] )) {
@@ -153,6 +166,16 @@ function han_dwa_qa_validate_question_data( $questionData ) {
     }
 
     return true;
+}
+
+/**
+ * Get the amount of questions for a Q&A
+ * @param (int) the Q&A ID
+ * @return (int) the amount of questions
+ */
+function han_dwa_qa_get_qa_question_amount( $qaId ) {
+    if($questionCount = get_post_meta( $qaId, 'han_dwa_qa_question_amount', true )) return $questionCount;
+    return 1;
 }
 
 /**

@@ -89,7 +89,7 @@ function han_dwa_post_deleted( $postId ) {
 function han_dwa_qa_clear_database_qa( $postId ) {
     global $wpdb;
 
-    $tableName   = $wpdb->prefix . HAN_DWA_QA_CLASS_RELATION_TABLE_NAME;
+    $tableName   = $wpdb->prefix . HAN_DWA_QA_QUESTION_RELATION_TABLE_NAME;
     $sql         = "SELECT `question_id` FROM $tableName WHERE `qa_id` = '$postId'";
 
     // Delete the questions
@@ -107,7 +107,7 @@ function han_dwa_qa_clear_database_qa( $postId ) {
 function han_dwa_qa_clear_database_question( $postId ) {
     global $wpdb;
 
-    $tableName = $wpdb->prefix . HAN_DWA_QA_CLASS_RELATION_TABLE_NAME;
+    $tableName = $wpdb->prefix . HAN_DWA_QA_QUESTION_RELATION_TABLE_NAME;
     $wpdb->delete( $tableName, array( 'question_id' => $postId ) );
 
     $tableName = $wpdb->prefix . HAN_DWA_QA_QUESTION_VOTES_TABLE_NAME;

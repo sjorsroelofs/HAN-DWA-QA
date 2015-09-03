@@ -142,17 +142,23 @@ msgstr ""
 msgid "Posted on %s at %s"
 msgstr ""
 
-msgid "References"
+msgid "References for question %s"
 msgstr ""
 
 msgid "Submit your question"
 msgstr ""
 
-msgid "Your question, discussion item"
+msgid "Your question or discussion item %s"
 msgstr ""
 
-msgid "Your references (including quote, url, time in video)"
+msgid "Your references (including quote, url, time in video) for question %s"
 msgstr ""
 
 msgid "Submit"
+msgstr ""
+
+msgid "Amount of questions"
+msgstr ""
+
+msgid "Question %s"
 msgstr ""

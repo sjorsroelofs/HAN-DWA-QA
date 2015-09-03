@@ -7,6 +7,14 @@
     margin-bottom: 0;
 }
 
+.han_dwa_qa_asked_question .han_dwa_qa_asked_question_single_question {
+    border-bottom: 1px dotted #ddd;
+}
+
+.han_dwa_qa_asked_question .han_dwa_qa_asked_question_single_question:last-child {
+    border-bottom: none;
+}
+
 .han_dwa_qa_asked_question .meta {
     margin-bottom: 0;
     padding: 10px 20px;

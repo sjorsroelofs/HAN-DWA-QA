@@ -66,7 +66,7 @@ function han_dwa_qa_register_cpt_tax() {
         'show_ui'            => true,
         'has_archive'        => false,
         'hierarchical'       => false,
-        'supports'           => array( 'editor' ),
+        'supports'           => array( 'title' ),
         'menu_icon'          => 'dashicons-format-status',
         'labels'             => array(
             'name'                 => __( 'Posted items', 'han-dwa-qa' ),

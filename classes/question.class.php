@@ -5,7 +5,9 @@ class Question {
     private $post;
     private $name;
     private $email;
-    private $reference;
+    private $qaId;
+    private $questions;
+    private $references;
     private $votes;
     private $qa;
 
@@ -35,9 +37,21 @@ class Question {
      * @return (void)
      */
     private function set_post_meta() {
-        $this->name        = get_post_meta( $this->id, 'han_dwa_qa_question_name', true );
-        $this->email       = get_post_meta( $this->id, 'han_dwa_qa_question_email', true );
-        $this->reference   = get_post_meta( $this->id, 'han_dwa_qa_question_reference', true );
+        global $wpdb;
+
+        $this->name         = get_post_meta( $this->id, 'han_dwa_qa_question_name', true );
+        $this->email        = get_post_meta( $this->id, 'han_dwa_qa_question_email', true );
+
+        $tableName          = $wpdb->prefix . HAN_DWA_QA_QUESTION_RELATION_TABLE_NAME;
+        $this->qaId         = $wpdb->get_var( "SELECT `qa_id` FROM `$tableName` WHERE `question_id` = '$this->id'" );
+
+        $this->questions    = array();
+        $this->references   = array();
+
+        for($i = 1; $i <= han_dwa_qa_get_qa_question_amount( $this->qaId ); $i++) {
+            $this->questions[]    = get_post_meta( $this->id, 'han_dwa_qa_question_content_' . $i, true );
+            $this->references[]   = get_post_meta( $this->id, 'han_dwa_qa_question_reference_' . $i, true );
+        }
 
         self::set_votes_count();
     }
@@ -94,11 +108,19 @@ class Question {
     }
 
     /**
-     * Get the reference
-     * @return (string) the reference
+     * Get the questions
+     * @return (array) the questions
      */
-    public function getReference() {
-        return $this->reference;
+    public function getQuestions() {
+        return $this->questions;
+    }
+
+    /**
+     * Get the reference
+     * @return (array) the references
+     */
+    public function getReferences() {
+        return $this->references;
     }
 
     /**

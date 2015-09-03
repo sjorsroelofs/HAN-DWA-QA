@@ -12,10 +12,13 @@ jQuery(function($) {
                 'action': 'han_dwa_qa_ajax_new_question',
                 'qa_id': $newQuestionForm.data('qa-id'),
                 'name': $newQuestionForm.find('input[name=name]').val(),
-                'email': $newQuestionForm.find('input[name=email]').val(),
-                'question': $newQuestionForm.find('textarea[name=question]').val(),
-                'reference': $newQuestionForm.find('textarea[name=reference]').val()
+                'email': $newQuestionForm.find('input[name=email]').val()
             };
+
+            $newQuestionForm.find("textarea[name*='question'], textarea[name*='reference']").each(function() {
+                var $this = $(this);
+                data[$this.attr('name')] = $this.val();
+            });
 
             $.post(han_dwa_qa_ajax_object.ajax_url, data, function(response) {
                 var response = $.parseJSON(response);

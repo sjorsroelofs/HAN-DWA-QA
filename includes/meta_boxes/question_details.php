@@ -39,7 +39,9 @@ function han_dwa_qa_question_details_meta_box_callback( $post ) {
     wp_nonce_field( $hanDwaQaQuestionDetailsActionId, $hanDwaQaQuestionDetailsNonceId );
 
     // Prepare the content
-    $question = new Question( $post->ID );
+    $question     = new Question( $post->ID );
+    $questions    = $question->getQuestions();
+    $references   = $question->getReferences();
 
     // Output
     include_once( 'question_details_html.php' );
@@ -71,6 +73,10 @@ function han_dwa_qa_question_details_meta_box_save( $postId ) {
     // Save the data
     update_post_meta( $postId, 'han_dwa_qa_question_name', $_POST['question-name'] );
     update_post_meta( $postId, 'han_dwa_qa_question_email', $_POST['question-email'] );
-    update_post_meta( $postId, 'han_dwa_qa_question_reference', $_POST['question-reference'] );
+
+    foreach($_POST as $key => $value) {
+        if(strpos( $key, 'question-' ) !== false) update_post_meta( $postId, 'han_dwa_qa_question_content_' . str_replace( 'question-', '', $key ), $_POST[$key] );
+        if(strpos( $key, 'reference-' ) !== false) update_post_meta( $postId, 'han_dwa_qa_question_reference_' . str_replace( 'reference-', '', $key ), $_POST[$key] );
+    }
 }
 add_action( 'save_post', 'han_dwa_qa_question_details_meta_box_save' );
