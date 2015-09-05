@@ -112,7 +112,7 @@ function han_dwa_qa_add_question_admin_columns( $columns ) {
  * Add content to the created admin columns for questions
  * @param (string) the column title
  * @param (int) the post ID
- * @return (void)
+ * @return (void / output buffer)
  */
 function han_dwa_qa_question_admin_columns_content( $column, $postId ) {
     $question = new Question( $postId );
@@ -153,7 +153,7 @@ function han_dwa_qa_add_qa_admin_columns( $columns ) {
  * Add content to the created admin columns for Q&A
  * @param (string) the column title
  * @param (int) the post ID
- * @return (void)
+ * @return (void / output buffer)
  */
 function han_dwa_qa_admin_columns_content( $column, $postId ) {
     if($column === 'question-counter') {

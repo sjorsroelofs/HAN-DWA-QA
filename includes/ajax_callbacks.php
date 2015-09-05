@@ -2,8 +2,8 @@
 
 /**
  * AJAX callback to add a question
- * @param (POST/array) the POST data for the question
- * @return (void)
+ * @param (POST array) the POST data for the question
+ * @return (void / output buffer)
  */
 function han_dwa_qa_ajax_new_question() {
     $result = array(
@@ -20,8 +20,8 @@ function han_dwa_qa_ajax_new_question() {
 
 /**
  * AJAX callback to upvote a question
- * @param (POST/array) the POST data wth the question ID
- * @return (void)
+ * @param (POST array) the POST data with the question ID
+ * @return (void / output buffer)
  */
 function han_dwa_qa_ajax_upvote_question() {
     $result = array(

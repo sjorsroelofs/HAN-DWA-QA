@@ -70,6 +70,7 @@ function han_dwa_qa_reset_permalinks() {
 
 /**
  * Add styles and scripts
+ * @return (void)
  */
 function han_dwa_qa_add_styles_scripts() {
     wp_enqueue_style( 'dashicons' );
@@ -84,7 +85,7 @@ function han_dwa_qa_add_styles_scripts() {
  * @return (void)
  */
 function han_dwa_qa_load_textdomain() {
-	load_plugin_textdomain( 'han-dwa-qa', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+    load_plugin_textdomain( 'han-dwa-qa', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 }
 
 /**
@@ -95,8 +96,6 @@ function han_dwa_qa_load_textdomain() {
  */
 function han_dwa_qa_add_question( $questionData = null, $qaId = null ) {
     $questionCount = han_dwa_qa_get_qa_question_amount( $qaId );
-
-
 
     if($qaId && (bool)get_post_status( intval( $qaId ) ) && han_dwa_qa_validate_question_data( $questionData, $questionCount ) && han_dwa_qa_is_email_unique_for_qa( intval( $qaId ), sanitize_email( $questionData['email'] ) )) {
         $questionId = wp_insert_post( array(
@@ -131,6 +130,8 @@ function han_dwa_qa_add_question( $questionData = null, $qaId = null ) {
 
 /**
  * Check if an email address hasn't already submitted a question to a specific Q&A
+ * @param (int) the Q&A ID
+ * @param (string) the email address
  * @return (bool) true when not submitted
  */
 function han_dwa_qa_is_email_unique_for_qa( $qaId, $email ) {
@@ -149,6 +150,7 @@ function han_dwa_qa_is_email_unique_for_qa( $qaId, $email ) {
 /**
  * Validate a question
  * @param (array) an array with the question fields
+ * @param (int) the question count
  * @return (bool) true on valid, false on invalid
  */
 function han_dwa_qa_validate_question_data( $questionData, $questionCount ) {
